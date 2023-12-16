@@ -44,14 +44,6 @@ public class BlogService {
 
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
-        Optional <Blog> blogOptional = blogRepository1.findById(blogId);
-
-        if(blogOptional.isPresent()){
-            Blog blog = blogOptional.get();
-
-            blog.getImageList().forEach(images -> imageService.deleteImage(images.getId()));
-
-            blogRepository1.deleteById(blogId); // Delete the Blog
-        }
+        blogRepository1.deleteById(blogId);
     }
 }
