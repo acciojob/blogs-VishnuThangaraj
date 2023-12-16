@@ -15,7 +15,6 @@ public class Blog {
     private Date pubDate;
     private User user;
 
-    @OneToMany
     private List<Image> imageList ;
 
     // No-Args Constructor

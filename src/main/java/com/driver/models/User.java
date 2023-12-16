@@ -15,7 +15,6 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    @OneToMany
     private List<Blog> blogList ;
 
     // No-Args Constructor
