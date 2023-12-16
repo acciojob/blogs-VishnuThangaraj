@@ -37,6 +37,7 @@ public class UserService {
         if(users.isPresent()){
             user = users.get();
             user.setPassword(password); // Update password
+            userRepository3.save(user);
         }
 
         return user;
