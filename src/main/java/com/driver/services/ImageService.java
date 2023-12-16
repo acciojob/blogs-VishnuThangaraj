@@ -28,6 +28,7 @@ public class ImageService {
             Blog blog = blogOptional.get();
             image.setBlog(blog);
             blog.getImageList().add(image); // add image to the blog
+            blogRepository2.save(blog);
         }
 
         return image;
