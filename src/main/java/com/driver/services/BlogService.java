@@ -29,7 +29,6 @@ public class BlogService {
         Blog blog = new Blog();
         blog.setTitle(title);
         blog.setContent(content);
-        blogRepository1.save(blog); // Save Blog to the Database
 
         //create a blog at the current time
         Optional<User> users = userRepository1.findById(userId);
@@ -37,7 +36,10 @@ public class BlogService {
             User user = users.get();
             blog.setUser(user);
             user.getBlogList().add(blog); // add blog to the userList
+            userRepository1.save(user);
         }
+
+        blogRepository1.save(blog); // Save Blog to the Database
 
         return blog;
     }
