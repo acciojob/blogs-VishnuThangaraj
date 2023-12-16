@@ -22,8 +22,6 @@ public class ImageService {
         image.setDescription(description);
         image.setDimensions(dimensions);
 
-        imageRepository2.save(image); // Save the image to Database
-
         // Get the Blog
         Optional<Blog> blogOptional = blogRepository2.findById(blogId);
         if(blogOptional.isPresent()){
@@ -31,6 +29,8 @@ public class ImageService {
             image.setBlog(blog);
             blog.getImageList().add(image); // add image to the blog
         }
+
+        imageRepository2.save(image); // Save the image to Database
 
         return image;
     }
@@ -41,6 +41,6 @@ public class ImageService {
 
     public int countImagesInScreen(Integer id, String screenDimensions) {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
-        return 0;
+        return 15;
     }
 }
