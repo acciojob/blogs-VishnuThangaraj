@@ -26,18 +26,18 @@ public class BlogService {
     ImageService imageService;
 
     public Blog createAndReturnBlog(Integer userId, String title, String content) {
-        //create a blog at the current time
-        Optional<User> users = userRepository1.findById(userId);
-        User user = users.get();
-
         Blog blog = new Blog();
         blog.setTitle(title);
         blog.setContent(content);
-        blog.setUser(user);
-
         blogRepository1.save(blog); // Save Blog to the Database
 
-        user.getBlogList().add(blog); // add blog to the userList
+        //create a blog at the current time
+        Optional<User> users = userRepository1.findById(userId);
+        if(users.isPresent()){
+            User user = users.get();
+            blog.setUser(user);
+            user.getBlogList().add(blog); // add blog to the userList
+        }
 
         return blog;
     }
@@ -45,10 +45,13 @@ public class BlogService {
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
         Optional <Blog> blogOptional = blogRepository1.findById(blogId);
-        Blog blog = blogOptional.get();
 
-        blog.getImageList().forEach(images -> imageService.deleteImage(images.getId()));
+        if(blogOptional.isPresent()){
+            Blog blog = blogOptional.get();
 
-        blogRepository1.deleteById(blogId); // Delete the Blog
+            blog.getImageList().forEach(images -> imageService.deleteImage(images.getId()));
+
+            blogRepository1.deleteById(blogId); // Delete the Blog
+        }
     }
 }

@@ -17,20 +17,20 @@ public class ImageService {
     ImageRepository imageRepository2;
 
     public Image addImage(Integer blogId, String description, String dimensions){
-        // Get the Blog
-        Optional<Blog> blogOptional = blogRepository2.findById(blogId);
-        Blog blog = blogOptional.get();
-
         //add an image to the blog
         Image image = new Image();
-
         image.setDescription(description);
         image.setDimensions(dimensions);
-        image.setBlog(blog);
-
-        blog.getImageList().add(image); // add image to the blog
 
         imageRepository2.save(image); // Save the image to Database
+
+        // Get the Blog
+        Optional<Blog> blogOptional = blogRepository2.findById(blogId);
+        if(blogOptional.isPresent()){
+            Blog blog = blogOptional.get();
+            image.setBlog(blog);
+            blog.getImageList().add(image); // add image to the blog
+        }
 
         return image;
     }

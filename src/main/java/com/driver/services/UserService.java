@@ -32,8 +32,13 @@ public class UserService {
 
     public User updateUser(Integer id, String password){
         Optional<User> users = userRepository3.findById(id);
-        User user = users.get();
-        user.setPassword(password); // Update password
+        User user = null;
+
+        if(users.isPresent()){
+            user = users.get();
+            user.setPassword(password); // Update password
+        }
+
         return user;
     }
 }
