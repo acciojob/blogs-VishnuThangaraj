@@ -16,10 +16,11 @@ public class User {
     private String firstName;
     private String lastName;
     @OneToMany
-    private List<Blog> blogList = new ArrayList<>();
+    private List<Blog> blogList ;
 
     // No-Args Constructor
     public User() {
+        blogList = new ArrayList<>();
     }
 
     // All-Args Constructor

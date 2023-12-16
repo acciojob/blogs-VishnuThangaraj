@@ -16,10 +16,11 @@ public class Blog {
     private User user;
 
     @OneToMany
-    private List<Image> imageList = new ArrayList<>();
+    private List<Image> imageList ;
 
     // No-Args Constructor
     public Blog() {
+        imageList = new ArrayList<>();
     }
 
     // All-Args Constructor
