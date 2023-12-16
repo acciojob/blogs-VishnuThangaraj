@@ -52,6 +52,7 @@ public class ImageService {
             while(max >= d){
                 max -= d;
                 count++;
+
             }
         }
         return count;
