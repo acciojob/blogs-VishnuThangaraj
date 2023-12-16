@@ -47,6 +47,9 @@ public class ImageService {
 
             String dimensions = image1.getDimensions();
             int d = (dimensions.charAt(0) - '0') * (dimensions.charAt(dimensions.length()-1) - '0');
+            if(d <= 0){
+                d = 1;
+            }
             int max = (screenDimensions.charAt(0) - '0') * (screenDimensions.charAt(screenDimensions.length()-1) - '0');
 
             while(max >= d){
