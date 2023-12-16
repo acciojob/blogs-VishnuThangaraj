@@ -1,6 +1,7 @@
 package com.driver.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Blog {
     private User user;
 
     @OneToMany
-    private List<Image> imageList;
+    private List<Image> imageList = new ArrayList<>();
 
     // No-Args Constructor
     public Blog() {

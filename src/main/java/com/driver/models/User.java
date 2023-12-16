@@ -2,6 +2,7 @@ package com.driver.models;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,7 @@ public class User {
     private String firstName;
     private String lastName;
     @OneToMany
-    private List<Blog> blogList;
+    private List<Blog> blogList = new ArrayList<>();
 
     // No-Args Constructor
     public User() {
