@@ -30,8 +30,6 @@ public class ImageService {
             blog.getImageList().add(image); // add image to the blog
         }
 
-        imageRepository2.save(image); // Save the image to Database
-
         return image;
     }
 
